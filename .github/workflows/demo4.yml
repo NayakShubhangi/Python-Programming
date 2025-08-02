@@ -1,0 +1,36 @@
+name: Workflow Task 1
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set environment variable for job1
+        run: echo "JOB1_VARIABLE=Hello from Job 1" >> $GITHUB_ENV
+
+      - name: Use environment variable from job1
+        run: echo "The value of the environment variable in Job 1 is $JOB1_VARIABLE"
+
+  job2:
+    runs-on: ubuntu-latest
+    needs: job1
+    steps:
+      - name: Set environment variable for job2
+        run: echo "JOB2_VARIABLE=Hello from Job 2" >> $GITHUB_ENV
+
+      - name: Use environment variable from job2
+        run: echo "The value of the environment variable in Job 2 is $JOB2_VARIABLE"
+
+  job3:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set environment variable for job3
+        run: echo "JOB3_VARIABLE=Hello from Job 3" >> $GITHUB_ENV
+
+      - name: Use environment variable from job3
+        run: echo "The value of the environment variable in Job 3 is $JOB3_VARIABLE"
