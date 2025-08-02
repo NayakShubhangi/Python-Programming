@@ -1,0 +1,29 @@
+name: GitHub Needs & Outputs Example
+
+on:
+  workflow_dispatch:
+ 
+jobs:
+  job_a:
+    runs-on: ubuntu-latest
+    outputs:     # Outputs must be defined if we expect to be set
+      result: ${{ steps.set_output.outputs.result }}
+    steps:
+      - name: Set Output
+        id: set_output
+        run: echo "result=passed" >> $GITHUB_OUTPUT
+ 
+  job_b:
+    needs: job_a
+    runs-on: ubuntu-latest
+    steps:
+      - name: Use output from job_a
+        run: echo "Job A said ${{ needs.job_a.outputs.result }}"
+ 
+  job_c:
+    needs: job_a     # Since job_c needs job_a to run, job_b and job_c run in parallel
+    runs-on: ubuntu-latest
+    if: needs.job_a.outputs.result == 'passed'
+    steps:
+      - name: Run only if job_a output is 'passed'
+        run: echo "Job A was successful and said 'passed'"
