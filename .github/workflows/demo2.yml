@@ -1,0 +1,17 @@
+name: Example of GITHUB_ENV
+ 
+on: [workflow_dispatch]
+ 
+jobs:
+  example-job:
+    runs-on: ubuntu-latest
+ 
+    steps:
+      - name: Set ENV variable
+        run: echo "MY_NAME=Shubhangi" >> $GITHUB_ENV
+        # The major difference between GITHUB_OUTPUT and GITHUB_ENV is that
+        # you don't need to define GITHUB_ENV
+ 
+      - name: Use ENV variable
+        # run: echo "Hello $MY_NAME"
+        run: echo "Hello {{ env.MY_NAME }}"
