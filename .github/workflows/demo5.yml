@@ -1,7 +1,9 @@
 name: Display Environment Variables
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
   job_1:
