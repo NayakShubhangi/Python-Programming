@@ -1,0 +1,36 @@
+name: Simple Workflow 1
+
+on: [workflow_dispatch]
+
+jobs:
+  job_1:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set Github Output Variable
+        run: |
+          echo "NAME=Shubhangi" >> $GITHUB_OUTPUT
+          echo "AGE=13" >> $GITHUB_ENV
+  
+  job_2:
+    needs: job_1
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Use job_1 Github Output
+        run: |
+          echo "job_1 github output - ${{ needs.job_1.outputs.NAME }}"
+          echo "RUNNING=True" >> $GITHUB_OUTPUT
+  
+  job_3:
+    needs: job_2
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Use job_2 Github Output
+        run: |
+          echo "job_2 github output - ${{ needs.job_2.outputs.RUNNING}}"
+          echo "COLOR=Blue" >> $GITHUB_ENV
+      
+      - name: Display Github ENV
+        run: echo "job_3 github env - ${{ env.COLOR }}"
