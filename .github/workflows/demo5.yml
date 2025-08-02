@@ -1,0 +1,26 @@
+name: Display Environment Variables
+
+on:
+  workflow_dispatch:
+
+jobs:
+  job_1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Define the first environment variable
+        run: echo "ENV_VAR_ONE=Hello" >> $GITHUB_ENV
+
+      - name: Define the second environment variable
+        run: echo "ENV_VAR_TWO=Hello Again" >> $GITHUB_ENV
+
+      - name: Display the environment variables
+        run: |
+          echo "This is being displayed in Step 3:"
+          echo "ENV_VAR_ONE: ${{ env.ENV_VAR_ONE }}"
+          echo "ENV_VAR_TWO: ${{ env.ENV_VAR_TWO }}"
+        
+      - name: Display the environment variables again
+        run: |
+          echo "This is being displayed in Step 4:"
+          echo "ENV_VAR_ONE: ${{ env.ENV_VAR_ONE }}"
+          echo "ENV_VAR_TWO: ${{ env.ENV_VAR_TWO }}"
