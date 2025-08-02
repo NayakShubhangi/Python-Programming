@@ -14,4 +14,4 @@ jobs:
  
       - name: Use ENV variable
         # run: echo "Hello $MY_NAME"
-        run: echo "Hello {{ env.MY_NAME }}"
+        run: echo "Hello ${{ env.MY_NAME }}"
