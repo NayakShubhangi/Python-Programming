@@ -5,9 +5,11 @@ on: [workflow_dispatch]
 jobs:
   job_1:
     runs-on: ubuntu-latest
-
+    outputs:
+      NAME: ${{ steps.id_1.outputs.NAME }}
     steps:
       - name: Set Github Output Variable
+        id: id_1
         run: |
           echo "NAME=Shubhangi" >> $GITHUB_OUTPUT
           echo "AGE=13" >> $GITHUB_ENV
@@ -15,9 +17,11 @@ jobs:
   job_2:
     needs: job_1
     runs-on: ubuntu-latest
-
+    outputs:
+      RUNNING: ${{ steps.id_2.outputs.RUNNING }}
     steps:
       - name: Use job_1 Github Output
+        id: id_2
         run: |
           echo "job_1 github output - ${{ needs.job_1.outputs.NAME }}"
           echo "RUNNING=True" >> $GITHUB_OUTPUT
@@ -29,7 +33,7 @@ jobs:
     steps:
       - name: Use job_2 Github Output
         run: |
-          echo "job_2 github output - ${{ needs.job_2.outputs.RUNNING}}"
+          echo "job_2 github output - ${{ needs.job_2.outputs.RUNNING }}"
           echo "COLOR=Blue" >> $GITHUB_ENV
       
       - name: Display Github ENV
