@@ -41,7 +41,7 @@ jobs:
     steps:
       - name: Display Output
         run: |
-          echo "my_output is ${needs.job1.outputs.MY_OUTPUT }}"
+          echo "my_output is ${{ needs.job1.outputs.MY_OUTPUT }}"
   
   job3:
     runs-on: ubuntu-latest
