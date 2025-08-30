@@ -5,10 +5,8 @@ on:
     inputs:
       string1:
         description: "Enter String One (github_env or github_output)"
-        required: true
       boolean1:
         description: "Enter Boolean One (True or False)"
-        required: true
         type: boolean
 
 jobs:
@@ -43,3 +41,18 @@ jobs:
       - name: Display Output
         run: |
           echo "my_output is ${{ needs.job1.outputs.MY_OUTPUT }}"
+  
+  job3:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Display Message If True
+        if: ${{ github.event.inputs.boolean1 == 'true' }}
+        run: |
+          echo "This is from job3"
+          echo "boolean1 is true"
+      
+      - name: Display Message If False
+        if: ${{ github.event.inputs.boolean1 == 'false' }}
+        run: |
+          echo "This is from job3"
+          echo "boolean1 is false"
