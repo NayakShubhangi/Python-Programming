@@ -23,7 +23,7 @@ jobs:
   job3:
     runs-on: ubuntu-latest
     needs: job2
-    if: success()
+    if: failure()
     steps:
       - name: Display Job3 Message
         run: |
