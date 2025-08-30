@@ -1,0 +1,26 @@
+name: Demo 6 Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      string1:
+        description: "Enter String One (github_env or github_output)"
+        required: true
+      boolean1:
+        description: "Enter Boolean One (True or False)"
+        required: true
+        type: boolean
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set Environment If Github Environment
+        if: ${{ github.event.inputs.string1 == 'github_env' }}
+        run: |
+          echo "my_env = hello_from_evironment" >> GITHUB_ENV
+      
+      - name: Display Environment
+        if: ${{ github.event.inputs.string1 == 'github_env' }}
+        run: |
+          echo "my_env is $my_env"
