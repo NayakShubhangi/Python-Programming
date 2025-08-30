@@ -46,7 +46,11 @@ jobs:
   job3:
     runs-on: ubuntu-latest
     needs: job2
-    if: ${{ always() }} # It will run regardless of whether job2 succeeds or fails (the 'finally' of github actions)
+    # if: ${{ always() }} # When using always(), job3 will run regardless of whether job2 succeeds or fails, or even if the workflow is cancelled.
+    if: ${{ success() || failure() }} # When using success(), job3 will run if job2 succeeds,
+    # and when using failure(), job3 will run if job2 fails.
+    # So, job3 will run regardless of whether job2 succeeds or fails,
+    # but will stop if the workflow is cancelled.
     steps:
       - name: Display Message If True
         if: ${{ github.event.inputs.boolean1 == 'true' }}
