@@ -23,4 +23,4 @@ jobs:
       - name: Display Environment
         if: ${{ github.event.inputs.string1 == 'github_env' }}
         run: |
-          echo "my_env is $my_env"
+          echo "my_env is $env.my_env"
