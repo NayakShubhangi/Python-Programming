@@ -15,12 +15,17 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
+      - name: Display Input
+        run: |
+          echo "Input value is ${{ github.event.inputs.string1 }}"
+
       - name: Set Environment If Github Environment
         if: ${{ github.event.inputs.string1 == 'github_env' }}
         run: |
-          echo "my_env=hello_from_evironment" >> GITHUB_ENV
-      
+          echo "MY_ENV=hello_from_evironment" >> GITHUB_ENV
+          echo "Evironment Variable Set Successfully"
+
       - name: Display Environment
         if: ${{ github.event.inputs.string1 == 'github_env' }}
         run: |
-          echo "my_env is ${{ env.my_env }}"
+          echo "my_env is ${{ env.MY_ENV }}"
