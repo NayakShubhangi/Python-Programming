@@ -18,7 +18,7 @@ jobs:
       - name: Set Environment If Github Environment
         if: ${{ github.event.inputs.string1 == 'github_env' }}
         run: |
-          echo "my_env = hello_from_evironment" >> GITHUB_ENV
+          echo "my_env=hello_from_evironment" >> GITHUB_ENV
       
       - name: Display Environment
         if: ${{ github.event.inputs.string1 == 'github_env' }}
