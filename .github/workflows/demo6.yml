@@ -14,11 +14,9 @@ on:
 jobs:
   job1:
     runs-on: ubuntu-latest
+    outputs:
+      MY_OUTPUT: ${{ steps.output123.outputs.MY_OUTPUT }}
     steps:
-      - name: Display Input
-        run: |
-          echo "Input value is ${{ github.event.inputs.string1 }}"
-
       - name: Set Environment If Github Environment
         if: ${{ github.event.inputs.string1 == 'github_env' }}
         run: |
@@ -29,3 +27,19 @@ jobs:
         if: ${{ github.event.inputs.string1 == 'github_env' }}
         run: |
           echo "my_env is ${{ env.MY_ENV }}"
+      
+      - name: Set Output If Github Output
+        id: output123
+        if: ${{ github.event.inputs.string1 == 'github_output' }}
+        run: |
+          echo "MY_OUTPUT=hello_from_output" >> $GITHUB_OUTPUT
+          echo "Output Variable Set Successfully"
+
+  job2:
+    runs-on: ubuntu-latest
+    needs: job1
+    if: ${{ github.event.inputs.string1 == 'github_output' }}
+    steps:
+      - name: Display Output
+        run: |
+          echo "my_output is ${{ needs.job1.outputs.MY_OUTPUT }}"
