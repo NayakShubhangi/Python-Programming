@@ -1,0 +1,39 @@
+name: Demo 7 Workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Display Job1 Message
+        run: |
+          echo "This is from Job 1"
+
+  job2:
+    runs-on: ubuntu-latest
+    needs: job1
+    if: always()
+    steps:
+      - name: Display Job2 Message
+        run: |
+          echo "This is from Job 2"
+
+  job3:
+    runs-on: ubuntu-latest
+    needs: job2
+    if: success()
+    steps:
+      - name: Display Job3 Message
+        run: |
+          echo "This is from Job 3"
+
+  job4:
+    runs-on: ubuntu-latest
+    needs: job2
+    if: always()
+    steps:
+      - name: Display Job4 Message
+        run: |
+          echo "This is from Job 4"
