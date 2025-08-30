@@ -12,6 +12,7 @@ on:
 jobs:
   job1:
     runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.string1 != '' }}
     outputs:
       MY_OUTPUT: ${{ steps.output123.outputs.MY_OUTPUT }}
     steps:
