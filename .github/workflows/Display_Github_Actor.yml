@@ -1,0 +1,12 @@
+name: Display Github Actor
+
+on:
+  workflow_dispatch:
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Display Github Actor
+        run: |
+          echo "${{ github.actor }} triggered this workflow"
