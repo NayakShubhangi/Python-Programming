@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Display Job1 Message
         run: |
-          echo "This is from Job 1"
+          echo This is from Job 1"
 
   job2:
     runs-on: ubuntu-latest
