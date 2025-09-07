@@ -47,5 +47,5 @@ Artifacts:
 
 Reusable Workflow versus Action:
 
-    - Reusable Workflows can be compared to Python Classes, as Python Classes have multiple methods within it. Similarly, Reusable Workflows can have multiple actions within it.
-    - Actions can be compared to Python Functions, as they can be used multiple times within a workflow.
+    Reusable Workflows can be compared to Python Classes, as Python Classes have multiple methods within it. Similarly, Reusable Workflows can have multiple actions within it.
+    Actions can be compared to Python Functions, as they can be used multiple times within a workflow.
