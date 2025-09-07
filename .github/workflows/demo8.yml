@@ -39,6 +39,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        # actions/checkout@v4 is a predefined action (which is being retreived from actions and it's version 4 is being used),
+        # which clones the current repository code to this job.
  
       - name: Build project
         run: |

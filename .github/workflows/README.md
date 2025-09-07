@@ -43,3 +43,9 @@ Artifacts:
     2. GitHub Environment can be accessible within multiple steps in a single job inside a workflow.
     3. GitHub Output can be accessible within multiple jobs in a single workflow.
     (Workflow >> Jobs >> Steps)
+
+
+Reusable Workflow versus Action:
+
+    - Reusable Workflows can be compared to Python Classes, as Python Classes have multiple methods within it. Similarly, Reusable Workflows can have multiple actions within it.
+    - Actions can be compared to Python Functions, as they can be used multiple times within a workflow.
