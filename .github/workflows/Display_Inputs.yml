@@ -1,0 +1,59 @@
+name: Demo Inputs Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      string_input:
+        description: "A string input"
+        required: true
+      boolean_input:
+        description: "A boolean input (true/false)"
+        required: true
+        type: boolean
+      number_input:
+        description: "A number input"
+        required: true
+        type: number
+      choice_input:
+        description: "A choice input"
+        required: true
+        type: choice
+        options:
+          - option1
+          - option2
+          - option3
+      environment_input:
+        description: "An environment variable (string)"
+        required: true
+      multiline_input:
+        description: "A multi-line string input"
+        required: true
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print String Input
+        run: |
+          echo "String input: ${{ github.event.inputs.string_input }}"
+
+      - name: Print Boolean Input
+        run: |
+          echo "Boolean input: ${{ github.event.inputs.boolean_input }}"
+
+      - name: Print Number Input
+        run: |
+          echo "Number input: ${{ github.event.inputs.number_input }}"
+
+      - name: Print Choice Input
+        run: |
+          echo "Choice input: ${{ github.event.inputs.choice_input }}"
+
+      - name: Print Environment Input
+        run: |
+          echo "Environment input: ${{ github.event.inputs.environment_input }}"
+
+      - name: Print Multiline Input
+        run: |
+          echo "Multiline input:"
+          echo "${{ github.event.inputs.multiline_input }}"
