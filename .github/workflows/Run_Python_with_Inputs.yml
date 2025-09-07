@@ -1,0 +1,26 @@
+# TODO Workflow of TASK THREE GOES HERE
+# Take github string input, then pass it into the python call
+name: Running Python Script with Inputs
+
+on:
+    workflow_dispatch:
+        inputs:
+            python_input:
+                description: "Enter input"
+                required: true
+
+jobs:
+    Run_Python_Script:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout code
+            uses: actions/checkout@v4
+
+          - name: Setup Python
+            uses: actions/setup-python@v5
+            with:
+                python-version: "3.10"
+        
+          - name: Run Python_Input.py
+            run: |
+             python Python_Code/Python_Input.py ${{ github.event.inputs.python_input }}
