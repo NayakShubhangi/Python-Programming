@@ -1,0 +1,20 @@
+name: If Conditions
+
+on:
+  workflow_dispatch:
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: contains() Example
+        if: contains('hello world', 'world')
+        run: echo "contains() worked"
+
+      - name: startsWith() Example
+        if: startsWith('github_actions', 'github_')
+        run: echo "startsWith() worked"
+
+      - name: endsWith() Example
+        if: endsWith('python-programming', '-programming')
+        run: echo "endsWith() worked"
