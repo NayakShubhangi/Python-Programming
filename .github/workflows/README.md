@@ -1,7 +1,6 @@
 GitOps - GitHub Development Test Operational with Full Support of CI/CD:
 
-    GitHub Actions is a CI/CD platform that allows you to automate workflows like building,
-testing, and deploying code directly from your GitHub repository.
+    GitHub Actions is a CI/CD platform that allows you to automate workflows like building, testing, and deploying code directly from your GitHub repository.
     GitHub Actions is an advanced replacement for Jenkins in almost all aspects.
 
 NOTE:
