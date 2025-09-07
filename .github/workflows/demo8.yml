@@ -1,0 +1,71 @@
+name: Multi-Env Deployment Simulation
+ 
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Choose environment"
+        required: true
+        default: "dev"
+        type: choice
+        options:
+          - dev
+          - qa
+          - prod
+      build_type:
+        description: "Build type (debug/release)"
+        required: true
+        default: "debug"
+        type: choice
+        options:
+          - debug
+          - release
+ 
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    outputs:
+      selected_env: ${{ github.event.inputs.environment }}
+      build_type: ${{ github.event.inputs.build_type }}
+    steps:
+      - name: Show inputs
+        run: |
+          echo "Environment chosen: ${{ github.event.inputs.environment }}"
+          echo "Build type chosen: ${{ github.event.inputs.build_type }}"
+ 
+  build:
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+ 
+      - name: Build project
+        run: |
+          echo "🔨 Building project for ${{ needs.setup.outputs.selected_env }} with ${{ needs.setup.outputs.build_type }} mode"
+          # Simulate build process
+          echo "BUILD_OK=true" >> $GITHUB_ENV
+ 
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Run tests
+        run: |
+          echo "🧪 Running tests..."
+          sleep 3
+          echo "✅ Tests passed!"
+ 
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+    if: ${{ needs.setup.outputs.selected_env != 'dev' }} # Don’t deploy for dev
+    environment: ${{ needs.setup.outputs.selected_env }}
+    steps:
+      - name: Deploy application
+        run: |
+          echo "🚀 Deploying to ${{ needs.setup.outputs.selected_env }} environment"
+          echo "Using secret: ${{ secrets.DEPLOY_TOKEN }}"
+          echo "Using var: ${{ vars.APP_NAME }}"
+          sleep 2
+          echo "✅ Deployment successful!"
