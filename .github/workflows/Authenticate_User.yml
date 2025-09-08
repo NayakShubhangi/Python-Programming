@@ -8,14 +8,14 @@ jobs:
   authenticate:
     runs-on: ubuntu-latest
     steps:
-      - name: Find Github Actor
+      - name: Display Github Actor
         run: |
           echo "${{ github.actor }} triggered this workflow"
   
   job2:
     runs-on: ubuntu-latest
     needs: authenticate
-    if: ${{ github.actor == 'NayakSubhangi'}}
+    if: ${{ github.actor == 'NayakShubhangi'}}
     steps:
       - name: Print Message
         run: |
@@ -24,7 +24,7 @@ jobs:
   job3:
     runs-on: ubuntu-latest
     needs: authenticate
-    if: ${{ github.actor == 'NayakSubhangi'}}
+    if: ${{ github.actor == 'NayakShubhangi'}}
     steps:
       - name: Print Message
         run: |
