@@ -7,7 +7,7 @@ on:
 jobs:
   authenticate:
     runs-on: ubuntu-latest
-    if: ${{ github.actor }} == 'NayakSubhangi'
+    if: ${{ github.actor == 'NayakSubhangi'}}
     steps:
       - name: Find Github Actor
         run: |
