@@ -1,0 +1,17 @@
+# TODO (DONE) Workflow of TASK FOUR GOES HERE
+name: Workflow Queue
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: Workflow_Group
+  cancel-in-progress: false
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sleep for 1 Minute
+        run: |
+          sleep 60s
