@@ -7,7 +7,6 @@ on:
 jobs:
   authenticate:
     runs-on: ubuntu-latest
-    if: ${{ github.actor == 'NayakSubhangi'}}
     steps:
       - name: Find Github Actor
         run: |
@@ -16,6 +15,7 @@ jobs:
   job2:
     runs-on: ubuntu-latest
     needs: authenticate
+    if: ${{ github.actor == 'NayakSubhangi'}}
     steps:
       - name: Print Message
         run: |
@@ -24,6 +24,7 @@ jobs:
   job3:
     runs-on: ubuntu-latest
     needs: authenticate
+    if: ${{ github.actor == 'NayakSubhangi'}}
     steps:
       - name: Print Message
         run: |
