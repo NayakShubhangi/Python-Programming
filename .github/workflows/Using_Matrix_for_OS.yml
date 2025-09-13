@@ -13,3 +13,9 @@ jobs:
           - name: Display
             run: |
              echo "Hello!"
+
+# TASK TWO: (DONE)
+# Clean up the vscode workspace and move the PythonProgramming (which should be renamed)
+
+# TASK FOUR: (DONE)
+# Brush up on Reusable workflows, and Cron Job.

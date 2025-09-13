@@ -1,0 +1,27 @@
+# TASK THREE: (DONE)
+# Create an environment which is similar to Development, and is named Production.
+# For Reviewers, add NayakShubhangi.
+# Create an environment secret, and an environment variable for Production.
+# Use the concept of matrix for environment [Development, Production]
+# There will be one job inside of the workflow,
+# which should have a print statement that should change based on the environment it's running in:
+name: Matrix Development and Production Example
+
+on:
+    workflow_dispatch:
+
+jobs:
+    job1:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                ENV: [Development, Production]
+        environment: ${{ matrix.ENV }}
+        steps:
+          - name: Print Development Message
+            if: matrix.ENV == 'Development'
+            run: echo "Running in Development environment"
+
+          - name: Print Production Message
+            if: matrix.ENV == 'Production'
+            run: echo "Running in Production environment"

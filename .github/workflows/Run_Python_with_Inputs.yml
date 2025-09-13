@@ -1,4 +1,4 @@
-# TODO (DONE) Workflow of TASK TWO GOES HERE
+# (DONE) Workflow of TASK TWO GOES HERE
 # Take github string input, then pass it into the python call
 name: Running Python Script with Inputs
 
