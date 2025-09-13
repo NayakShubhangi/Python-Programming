@@ -1,0 +1,20 @@
+name: Deploy to Environment
+
+on:
+    workflow_dispatch:
+
+jobs:
+    job1:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Display Message
+            run: |
+             echo ${{ vars.PYTHON_VERSION }}
+    
+    job2:
+        runs-on: ubuntu-latest
+        environment: Development
+        steps:
+          - name: Display Message
+            run: |
+             echo ${{ vars.PYTHON_VERSION }}
