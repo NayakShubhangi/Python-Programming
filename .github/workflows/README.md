@@ -52,3 +52,8 @@ Reusable Workflow versus Action:
 
     Reusable Workflows can be compared to Python Classes, as Python Classes have multiple methods within it. Similarly, Reusable Workflows can have multiple actions within it.
     Actions can be compared to Python Functions, as they can be used multiple times within a workflow.
+
+
+Matrix:
+
+    Matrix allows you to run jobs parallely based on its values. It can be added using strategy: matrix: *Variable name*: *value* It will run the job once for each value within matrix's variable. It is possible to create multiple variables within matrix.
