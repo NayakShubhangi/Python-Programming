@@ -1,4 +1,4 @@
-name: Multiple Matrix Variables
+name: Using Matrix with Multiple Values in os
 
 on:
     workflow_dispatch:
