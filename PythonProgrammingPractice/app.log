@@ -1,0 +1,6 @@
+2025-03-02 08:11:33 - DEBUG - This is debugging from logging
+2025-03-02 08:11:33 - INFO - This is info from logging
+2025-03-02 08:11:33 - ERROR - This is something from logging
+2025-03-02 08:12:01 - DEBUG - This is debugging from logging
+2025-03-02 08:12:01 - INFO - This is info from logging
+2025-03-02 08:12:01 - ERROR - This is something from logging

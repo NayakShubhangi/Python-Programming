@@ -1,0 +1,5 @@
+sqlalchemy
+pandas
+pyttsx3
+streamlit
+pymysql

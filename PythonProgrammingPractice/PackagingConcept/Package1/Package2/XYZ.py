@@ -1,0 +1,2 @@
+def func2(a=3, b=2):
+    return a - b

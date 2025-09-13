@@ -1,0 +1,80 @@
+1. Database named Restaurant
+2. Five tables: Admin [ID, Name, Discount], Staff [ID, Name], Menu [Food Items, Price, Quantity], Credentials [ID, Name, Username, Password (Hashed)],
+2 (cont'd). Customers [Name, Mobile Number, Payment Method, First Visit, Current Visit] (Customers table is optional)
+3. API code to get menu items, generate bill, update menu items, create menu items
+4. Handling Admin and Staff authenticity and authorization
+
+TASK ONE:
+The customer might go to the restaurant and not use their membership card. Try to deal with this issue.
+1. If the customer has a membership card,
+  - When the customer (gets their bill), ask them whether they would like to use their membership card.
+    -If they want to use their membership card,
+      -Add 1 to cardVisits and apply the discount
+    -If they don't want to use their membership card,
+      -Do nothing.
+2. If the customer doesn't have a membership card,
+  - Ask the customer if they would like to buy the membership card.
+    -If they want to buy the membership card,
+      -Change membershipCard to True (and membership visits remain at 0)
+      -Ask if they would like to use their membership card.
+        -If they want to use it,
+          -Change membership card visits to add 1.
+    -If they don't want to buy the membership card,
+      -Do nothing.
+
+TASK TWO:
+Figure out how to make the membership card visits "flexible"
+(the current maximum number of visits is 10, but we should change it to another value).
+- Make another column in the database for the "maximum number of visits" and check accordingly.
+
+TASK THREE:
+Figure out how to make the membership card price "flexible" (meaning that its price could be changed at any time).
+- Make another column in the database for the "membership card price" and check accordingly.
+
+TASK FOUR:
+Need a method/function that can take a parameter String. The parameter is a password, and then the method/function should return the
+string conversion of the hashed version of the password. (Hashed version should be stored in the database,
+while the string conversion doesn't really do anything)
+-> DONE
+
+TASK FIVE:
+Come up with 10 different menu items: Id, Name, Price:
+1  | Burger    | $5.99
+2  | Pizza     | $7.99
+3  | Hot Dog   | $3.99
+4  | Fries     | $2.99
+5  | Salad     | $4.99
+6  | Sandwich  | $6.49
+7  | Tacos     | $5.49
+8  | Soup      | $4.49
+9  | Pasta     | $6.99
+10 | Ice Cream | $3.99
+
+
+
+
+subtask: find and retrieve Guess_Number.py from the recyle bin (move to pythonprojects)- RETRIEVED
+
+TASK ONE:
+Complete Step 2 (Create the five tables with their appropriate columns)- CREATED
+
+TASK TWO:
+Figure out how to accomplish Step 4 (since admin gets extra privliges that shouldn't be given to staff,
+effectively restrict staff from accessing admin)
+1. Ask for ID
+2. Then:
+- If the ID exists in the Admin table, give Admin access
+- If the ID exists in the Staff table but not in Admin table, give Staff access
+
+TASK THREE:
+Go through FastAPI and Pandas (for FastAPI, look at app.get, app.post, app.update, and other crud operations)
+
+TASK FOUR:
+Write the code to generate a bill:
+1. Take input from user (name and everything)
+2. Add details to database
+3. Ask user for food items they would like to purchase
+4. Access prices for all the wanted food items
+5. Add together their prices and total the bill
+6. If any discounts, apply discounts to bill
+7. Show customer their final bill, using Pandas
