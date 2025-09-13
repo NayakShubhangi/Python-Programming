@@ -5,8 +5,8 @@
 # then pass it into the python call
 import sys
 
-def Display_Input(user_input: str):
+def Display_Input(user_input):
     print(user_input)
 
-user_input = sys.argv[1]
+user_input = sys.argv[1:]
 Display_Input(user_input)
