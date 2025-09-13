@@ -25,7 +25,7 @@ Triggers:
     4. Workflow Call: Reusable workflow to call in another workflow
 
 
-Environments and Secrets:
+Environments, Secrets, and Variables:
 
     Secrets can be three types:
         - 1. Environment Secrets (Bottom Level)
@@ -34,6 +34,10 @@ Environments and Secrets:
                 - Specific to the (ONE) repository and accessible by all of its branches along with its permissions
         - 3. Organizational Secrets (Top Level)
                 - Specific to the organization and accessible by ALL of the repositories within the organization
+    
+    Environment Secrets/Variables will overwrite Repository Secrets/Variables if they have the same name.
+
+    When using an Environment Secret/Variable, the workflow will need access to run in the environment the Secret/Variable belongs to, which can only be approved to deploy by up to 6 'Reviewers.' It will only run the job that requires the environment if it gets deployed. Otherwise, that job won't run. Jobs that don't need an environment will run without any trouble.
 
 
 Artifacts:
