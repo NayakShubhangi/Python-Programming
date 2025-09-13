@@ -1,0 +1,16 @@
+name: Matrix Deployment Example
+
+on:
+    workflow_dispatch:
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                ENV: [Development, Production]
+        environment: ${{ matrix.ENV }}
+        steps:
+          - name: Display vars Python Version
+            run: |
+             echo ${{ vars.PYTHON_VERSION }}
