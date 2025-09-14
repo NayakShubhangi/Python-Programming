@@ -1,0 +1,14 @@
+name: Notify Slack
+
+on:
+    workflow_dispatch:
+
+jobs:
+    notify:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Notify Slack
+            run: |
+             curl -X POST -H 'Content-type: application/json' \
+             --data '{"text":"Workflow finished successfully 🚀"}' \
+             ${{ secrets.SLACK_WEBHOOK }}
