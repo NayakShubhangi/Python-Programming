@@ -1,0 +1,33 @@
+name: Reusable Workflow Example
+
+on:
+    workflow_call:
+        inputs:
+            python_version:
+                type: string
+                description: "Enter the python version"
+                required: true
+        secrets:
+            CUSTOM_SECRET:
+                required: false
+
+jobs:
+    job1:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout Python Code
+            uses: actions/checkout@v4
+
+          - name: Setup Python
+            uses: actions/setup-python@v5
+            with:
+                python-version: ${{ inputs.python_version }}
+        
+          - name: Run Python Code
+            run: |
+             python Python_Input.py String
+        
+          - name: Display Secret
+            if: ${{ secrets.CUSTOM_SECRET != '' }}
+            run: |
+             echo "Secrets Recieved"

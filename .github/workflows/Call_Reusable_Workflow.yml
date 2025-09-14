@@ -1,0 +1,12 @@
+name: Calling Reusable Workflow
+
+on:
+    workflow_dispatch:
+
+jobs:
+    Using_Reusable_Workflow:
+        uses: ./.github/workflows/Reusable_Workflow.yml
+        with:
+            python_version: "3.13"
+        secrets:
+            CUSTOM_SECRET: ${{ secrets.GIT_ACCOUNT }}
