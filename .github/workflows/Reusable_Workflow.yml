@@ -25,7 +25,7 @@ jobs:
         
           - name: Run Python Code
             run: |
-             python Python_Input.py String
+             python Python_Code/Python_Input.py String
         
           - name: Display Secret
             run: |
