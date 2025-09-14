@@ -8,7 +8,7 @@ on:
                 description: "Enter the python version"
                 required: true
         secrets:
-            CUSTOM_SECRET:
+            GIT_ACCOUNT:
                 required: false
 
 jobs:
@@ -28,6 +28,5 @@ jobs:
              python Python_Input.py String
         
           - name: Display Secret
-            if: ${{ secrets.CUSTOM_SECRET != '' }}
             run: |
-             echo "Secrets Recieved"
+             echo "Secrets Recieved: ${{ secrets.GIT_ACCOUNT }}"
